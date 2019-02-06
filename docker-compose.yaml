@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  sse-client:
+    image: node:11-alpine
+    working_dir: /app
+    tty: true
+    volumes:
+      - .:/app
+    entrypoint: npm
+    command: ['run', 'build']
