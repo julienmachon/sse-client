@@ -1,0 +1,48 @@
+{
+  "name": "sse-client",
+  "version": "1.0.0",
+  "description": "Server-sent event client using the fetch API",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "unpkg": "dist/sse-client.js",
+  "directories": {
+    "example": "example"
+  },
+  "devDependencies": {
+    "prettier": "^1.16.4",
+    "rollup": "^1.1.2",
+    "rollup-plugin-replace": "^2.1.0",
+    "rollup-plugin-terser": "^4.0.4",
+    "rollup-plugin-typescript": "^1.0.0",
+    "tslib": "^1.9.3",
+    "typescript": "^3.3.1"
+  },
+  "dependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm run build:commonjs && npm run build:es && npm run build:umd",
+    "build:commonjs": "tsc --module commonjs --outDir lib",
+    "build:es": "tsc --module es2015 --outDir es",
+    "build:umd": "rollup -c"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/julienmachon/sse-client.git"
+  },
+  "keywords": [
+    "sse",
+    "eventsource",
+    "fetch",
+    "stream"
+  ],
+  "author": "Julien Machon",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/julienmachon/sse-client/issues"
+  },
+  "homepage": "https://github.com/julienmachon/sse-client#readme",
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "all"
+  }
+}
