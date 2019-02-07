@@ -1,8 +1,12 @@
 import { read } from 'fs';
 
+interface Listener {
+  [eventType: string]: (message: MessageEvent) => any;
+}
 class SSEClient {
   private reader?: ReadableStreamReader;
   private controller: AbortController = new AbortController();
+  private listeners?: Listener[];
   public onopen?: () => any;
   public onclose?: () => any;
   public onmessage?: (message: string) => any;
@@ -61,8 +65,16 @@ class SSEClient {
     this.reader.releaseLock();
   }
 
-  // TODO: implement
-  addEventListener(event: string, callback: () => void) {}
+  addEventListener(
+    eventType: string,
+    callback: (message?: MessageEvent) => void,
+  ) {
+    this.listeners[eventType] = callback;
+  }
+
+  removeEventListener(eventType): void {
+    delete this.listeners[eventType];
+  }
 }
 
 export default SSEClient;
