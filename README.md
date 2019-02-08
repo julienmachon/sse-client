@@ -21,6 +21,26 @@ I've not be able to find a single example or library, so I'm writing my own.
 
 In development
 
+## Documentation
+
+```typescript
+import SSEClient from 'sse-client';
+
+const es = new SSEClient('http://url', {
+  headers: new Headers({
+    'Last-Event-ID': 'some-id',
+    Authorization: 'Bearer 123token',
+  }),
+});
+
+es.onopen = (event: Event) => void;
+es.onclose = () => void;
+es.onmessage = (messageEvent: MessageEvent) => any;
+es.addEventListener('MyEvent', (messageEvent) => any);
+es.removeEventListener('MyEvent');
+es.close();
+```
+
 ## Development
 
 ### With Node.js

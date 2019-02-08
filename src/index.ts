@@ -1,5 +1,3 @@
-import { read } from 'fs';
-import { stringify } from 'querystring';
 import {
   parseChunkToStringEvent,
   ParsedStringEvent,
